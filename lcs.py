@@ -33,9 +33,9 @@ class LCS(Resource):
 
         B = [[0] * (n + 1) for _ in range(m + 1)]
 
-        LCS_count = LCS.backTrack(C, X, Y, m, n, B)
+        LCS_sequence = LCS.backTrack(C, X, Y, m, n, B)
 
-        return jsonify({"LCS_count": LCS_count, "asigned_number_table": C, 'arrow_table': B, "time_elapsed": "%.5f" % (elapsed * 1000)})
+        return jsonify({"LCS_count": LCS_sequence, "asigned_number_table": C, 'arrow_table': B, "time_elapsed": "%.5f" % (elapsed * 1000)})
 
     @staticmethod
     def get_LCS(X, Y):
@@ -74,7 +74,7 @@ class LCS(Resource):
         else:
             if C[i][j - 1]['asigned_number'] > C[i - 1][j]['asigned_number']:
                 B[i][j] = 1
-                return LCS.backTrack(C, X, Y, i, j - 1, B)
+                return LCS.backTrack(C, X, Y, i, j - 1, B) + '-'
             else:
                 B[i][j] = 1
                 return LCS.backTrack(C, X, Y, i - 1, j, B)

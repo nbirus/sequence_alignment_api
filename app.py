@@ -18,6 +18,7 @@ app = Flask(__name__)
 api = Api(app)
 
 api.add_resource(LCS, '/api/get_lcs_tables')
+# api.add_resource(Clustering, '/api/cluster')
 
 if __name__ == '__main__':
     # logger.info("server starting with port 10260:")
